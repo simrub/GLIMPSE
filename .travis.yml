@@ -1,0 +1,39 @@
+sudo: false
+
+os: linux
+dist: trusty
+
+language: cpp
+
+compiler:
+  - g++
+
+env:
+  global:
+    - MAKEFLAGS="-j2"
+
+matrix:
+  include:
+    - compiler: g++
+      env:
+        - CXX="-std=c++11"
+        - CXXFLAG="-O3"
+      addons:
+        apt:
+          update: true    
+          sources:
+            - sourceline: 'ppa:mhier/libboost-latest'
+      packages:
+        - g++-6
+        - boost1.67
+        - liblzma-dev
+        - libbz2-dev
+
+before_script:
+  - git clone --branch=develop git://github.com/samtools/htslib.git
+  - cd htslib; make;cd ..
+  - export HTSSRC=`pwd`/htslib
+
+script:
+  - cd phase; make travis; cd ..
+#  - make test BAMDIR=`pwd`/smallBam/
