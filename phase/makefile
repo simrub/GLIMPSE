@@ -49,9 +49,9 @@ cluster: $(BFILE)
 
 travis: HTSLIB_INC=$(HTSSRC)
 travis: HTSLIB_LIB=$(HTSSRC)/libhts.a
-travis: BOOST_INC=/usr/include
-travis: BOOST_LIB_IO=/usr/lib/x86_64-linux-gnu/libboost_iostreams.a
-travis: BOOST_LIB_PO=/usr/lib/x86_64-linux-gnu/libboost_program_options.a
+travis: BOOST_INC=${BOOSTSRC}/include
+travis: BOOST_LIB_IO=${BOOSTSRC}/lib/libboost_iostreams.a
+travis: BOOST_LIB_PO=${BOOSTSRC}/lib/libboost_program_options.a
 travis: $(BFILE)
 
 static_exe: HTSSRC=../../htslib
