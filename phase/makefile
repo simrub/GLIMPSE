@@ -23,17 +23,17 @@ BFILE=bin/GLIMPSE_$(NAME)
 EXEFILE=bin/GLIMPSE_$(NAME)_static
 
 #CONDITIONAL PATH DEFINITON
-desktop: HTSSRC=../..
-desktop: HTSLIB_INC=$(HTSSRC)/htslib
-desktop: HTSLIB_LIB=$(HTSSRC)/htslib/libhts.a
+desktop: HTSSRC=../../htslib
+desktop: HTSLIB_INC=$(HTSSRC)
+desktop: HTSLIB_LIB=$(HTSSRC)/libhts.a
 desktop: BOOST_INC=/usr/include
 desktop: BOOST_LIB_IO=/usr/local/lib/libboost_iostreams.a
 desktop: BOOST_LIB_PO=/usr/local/lib/libboost_program_options.a
 desktop: $(BFILE)
 
-olivier: HTSSRC=$(HOME)/Tools
-olivier: HTSLIB_INC=$(HTSSRC)/htslib-1.9
-olivier: HTSLIB_LIB=$(HTSSRC)/htslib-1.9/libhts.a
+olivier: HTSSRC=$(HOME)/Tools/htslib-1.9
+olivier: HTSLIB_INC=$(HTSSRC)
+olivier: HTSLIB_LIB=$(HTSSRC)/libhts.a
 olivier: BOOST_INC=/usr/include
 olivier: BOOST_LIB_IO=/usr/lib/x86_64-linux-gnu/libboost_iostreams.a
 olivier: BOOST_LIB_PO=/usr/lib/x86_64-linux-gnu/libboost_program_options.a
@@ -47,9 +47,16 @@ cluster: BOOST_LIB_IO=/software/lib64/libboost_iostreams.a
 cluster: BOOST_LIB_PO=/software/lib64/libboost_program_options.a
 cluster: $(BFILE)
 
-static_exe: HTSSRC=../..
-static_exe: HTSLIB_INC=$(HTSSRC)/htslib
-static_exe: HTSLIB_LIB=$(HTSSRC)/htslib/libhts.a
+travis: HTSLIB_INC=$(HTSSRC)
+travis: HTSLIB_LIB=$(HTSSRC)/libhts.a
+travis: BOOST_INC=/usr/include
+travis: BOOST_LIB_IO=/usr/lib/x86_64-linux-gnu/libboost_iostreams.a
+travis: BOOST_LIB_PO=/usr/lib/x86_64-linux-gnu/libboost_program_options.a
+travis: $(BFILE)
+
+static_exe: HTSSRC=../../htslib
+static_exe: HTSLIB_INC=$(HTSSRC)
+static_exe: HTSLIB_LIB=$(HTSSRC)/libhts.a
 static_exe: BOOST_INC=/usr/include
 static_exe: BOOST_LIB_IO=/usr/lib/x86_64-linux-gnu/libboost_iostreams.a
 static_exe: BOOST_LIB_PO=/usr/lib/x86_64-linux-gnu/libboost_program_options.a
