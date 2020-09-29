@@ -30,10 +30,11 @@ matrix:
         - libbz2-dev
 
 before_script:
-  - git clone --branch=develop git://github.com/samtools/htslib.git
+  - git clone --branch=master git://github.com/samtools/htslib.git
   - cd htslib; make;cd ..
   - export HTSSRC=`pwd`/htslib
 
 script:
-  - cd simrub/GLIMPSE/phase; make travis; cd ..
+  - echo 'pwd'; ls;
+  - cd phase; make travis; cd ..
 #  - make test BAMDIR=`pwd`/smallBam/
