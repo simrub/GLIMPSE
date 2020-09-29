@@ -35,5 +35,5 @@ before_script:
   - export HTSSRC=`pwd`/htslib
 
 script:
-  - cd phase; make travis; cd ..
+  - cd GLIMPSE/phase; make travis; cd ..
 #  - make test BAMDIR=`pwd`/smallBam/
